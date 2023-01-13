@@ -1,0 +1,59 @@
+1) SELECT CustomerName, ContactName, Address
+   FROM Customers
+   WHERE Address IS NULL;
+
+2) UPDATE Customers
+   SET ContactName='Richie Parvis', City='Berlin'
+   WHERE CustomerID=3;
+
+3) INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+   VALUES ('Cardinals','Thomas B. Erichs','Main 01','Pasadena','4006','Norway');
+
+i) DELETE FROM Customers WHERE CustomerName='Cardinals';
+
+4) SELECT TOP 5 * FROM Employees;
+
+5) SELECT TOP 20 PERCENT * FROM Products;
+
+   SELECT * FROM Customers
+   WHERE Country='UK' AND ROWNUM <= 15;
+
+6) SELECT MIN(Price) AS 'Lowest Price', MAX(Price) AS 'Highest Price'
+   FROM Products;   
+
+7/8) SELECT SUM(Quantity), AVG(Quantity)
+     FROM OrderDetails;
+
+9) SELECT * FROM Employees
+   WHERE LastName LIKE '%g';
+
+10) SELECT * FROM Employees
+    WHERE FirstName LIKE '_a%' AND FirstName LIKE '%t';
+
+11) SELECT * FROM Categories
+    WHERE CategoryName LIKE '[bsp]%';
+
+12) SELECT * FROM Categories
+    WHERE CategoryName LIKE '[c-g]%';
+
+13) SELECT * FROM Suppliers
+    WHERE City IN ('Tokyo', 'London', 'Paris');
+
+        
+
+        
+
+        
+
+        
+        
+
+        
+
+        
+
+
+	SELECT (to limit the columns)
+	column1 	column2
+row1						WHERE (to limit the rows)
+row2 

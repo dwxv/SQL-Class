@@ -1,0 +1,26 @@
+distinct count
+1) select count(distinct ID) from teaches
+WHERE semester = 'Spring' AND year = '2010';
+
+2) select title from course
+WHERE credits = '3' AND dept_name = "Comp. Sci.";
+
+3) select name, salary from instructor
+where salary <= (select avg(salary) from instructor);
+
+4) select count(ID) as enrollment from takes
+natural join section
+where semester = 'Spring' AND year = '2010'
+group by course_id AND sec_id;
+
+5) select max(enrollment) from (select count(ID) as enrollment from takes natural join section where semester = 'Fall' AND year = '2009' group by course_id AND sec_id) as MaxEnrollment
+
+6) select i.name, t.course_id 
+from instructor as i, teaches as t
+where i.ID = t.ID;
+
+select instructor.name, teaches.course_id from instructor
+natural join teaches;
+
+7) select name from instructor
+where salary in (select name from instructor where salary = 'NULL');

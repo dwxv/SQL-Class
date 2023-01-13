@@ -1,0 +1,33 @@
+1) 
+select Lastname, Firstname, Region, Birthday From Members 
+where Birthday < ALL(Select Birthday From Members Where Region='GA');
+
+2)
+select Lastname, Firstname, Region, Birthday
+from Members
+where Birthday = ANY(Select Birthday from Members where region = 'GA');
+
+3)
+select Artistname, COUNT(T.ArtistID) as NumTitles
+from Artists as A, Titles as T
+where A.ArtistID = T.ArtistID
+group by Artistname;
+
+4)
+select Artistname, COUNT(T.ArtistID) as NumTitles
+from Artists as A inner join Titles as T
+on A.artistID=T.artistID
+group by artistName;
+
+5)
+select title, tracktitle
+from Titles inner join Tracks
+on Titles.titleid = Tracks.titleid
+where studioID = 2
+limit 2;
+
+6)
+SELECT	 Artistname, Title 
+FROM	 Artists A Inner Join Titles T 
+ON 	 A.ArtistID=T.ArtistID
+limit 3;

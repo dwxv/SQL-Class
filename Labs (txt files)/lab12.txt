@@ -1,0 +1,92 @@
+SELECT 
+    first_name,
+    last_name,
+    hire_date,
+    CASE (2000 - YEAR(hire_date))
+        WHEN ( GREATER THAN 5 OR LESS THAN 9) THEN '5 year'
+    END aniversary
+FROM
+    employees
+ORDER BY aniversary;
+---------------------------------------------------------
+---------------------------------------------------------
+SELECT 
+    first_name,
+    last_name,
+    hire_date,
+    CASE (2000 - YEAR(hire_date))
+        WHEN 5 THEN '5 year'
+        WHEN 10 THEN '10 years'
+        WHEN 15 THEN '15 years'
+        WHEN 20 THEN '20 years'
+        WHEN 25 THEN '25 years'
+        WHEN 30 THEN '30 years'
+    END aniversary
+FROM
+    employees
+ORDER BY aniversary;
+----------------------------------------------------------
+select first_name, last_name from employees
+where salary = 
+(select avg(salary) from employees);
+-----------------------------------------------------------
+select first_name, last_name, salary
+from employees
+having avg(salary);
+------------------------------------------------------------
+SELECT
+    e.department_id,
+    department_name,
+    MIN(salary)
+FROM
+    employees e
+INNER JOIN departments d ON d.department_id = e.department_id
+GROUP BY
+    e.department_id
+HAVING
+    MIN(salary) >= 10000
+ORDER BY
+    MIN(salary);
+------------------------------------------------------------
+select department_id, sum(salary) from employees
+group by department_id
+having sum(salary) between 20000 and 30000
+order by department_id;
+------------------------------------------------------------
+SELECT
+    e.department_id,
+    department_name,
+    MIN(salary)
+FROM
+    employees e
+INNER JOIN departments d ON d.department_id = e.department_id
+GROUP BY
+    e.department_id
+HAVING
+    MIN(salary) >= 10000
+ORDER BY
+    MIN(salary);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

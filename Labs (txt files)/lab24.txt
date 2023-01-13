@@ -1,0 +1,54 @@
+1)
+ select curdate() as CurrentDate,  curtime() as CurrentTime;
+
+2)
+ select date_format('2018-08-15','%M %D,%Y') as Enrollment, 
+date_format(adddate(subdate('2018-08-15',interval 3 month), interval 6 year), '%M %D,%Y') as GraduationDate;
+
+
+3)
+SELECT firstName, lastName, address, city,  region, postalCode
+FROM   Members
+UNION
+SELECT studioName, ' ', address, city, region, postalCode
+FROM   Studios
+order by lastName;
+
+4)
+SELECT   region  FROM  Artists
+UNION  ALL 
+SELECT   region   FROM  Studios
+ORDER  BY  region;
+
+5)
+Select 1 As 'Order', '< 4 minutes' As Length, Count(*) As NumTracks 
+From Tracks Where LengthSeconds<240
+Union
+Select 2, '4-6 minutes', Count(*) 
+From Tracks Where LengthSeconds Between 240 and 360
+Union
+Select 3, '>6 minutes', Count(*) 
+From Tracks Where LengthSeconds>360;
+
+6)
+Select Artistname From Artists A 
+Where Exists 
+(Select ArtistID, Count(MemberID) 
+From XrefArtistsMembers X 
+Where X.ArtistID= A.ArtistID 
+Group by ArtistID 
+Having Count(MemberID)>1);
+
+7)
+Select Artistname From Artists A 
+Where Exists 
+  (Select ArtistID From Titles T 
+   Where T.ArtistID= A.ArtistID 
+           And Exists
+          (Select TitleID  From Tracks TR 
+           Where TR.TitleID = T.TitleID 
+           Group by TitleID 
+           Having Count(Tracknum)>=10)
+   );
+
+

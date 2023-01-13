@@ -1,0 +1,8 @@
+select * from employees
+where (first_name = 'Steven') AND (last_name = 'King');
+-------------------------------------------------------------
+select * from employees
+where MONTH (hire_date) = 12;
+-------------------------------------------------------------
+select * from employees
+WHERE salary BETWEEN 10000 AND 14000;

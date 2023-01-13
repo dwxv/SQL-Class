@@ -1,0 +1,54 @@
+1)
+Select titleid, TrackTitle, LengthSeconds, (Select Sum(lengthseconds) 
+	From Tracks where titleid=4) As TotSec, 
+    LengthSeconds /(Select Sum(lengthseconds) 
+	From Tracks where titleid=4)  *100 As Percentage
+From    Tracks
+Where  titleid=4;
+
+2)
+Select TrackTitle, LengthSeconds As Sec, 
+(Select Sum(lengthseconds) From Tracks SC 
+Where SC.TitleID=T.TitleID) As TotSec
+From Tracks T;
+
+3)
+Select TrackTitle, LengthSeconds As Sec, 
+(Select Sum(lengthseconds) From Tracks SC 
+Where SC.TitleID=T.TitleID) As TotSec
+From Tracks T
+Where TrackNum=1;
+
+4)
+Select Artistname From Artists A
+Where Exists (Select ArtistID, Count(MemberID) From XrefArtistsMembers X Where X.ArtistID= A.ArtistID Group by ArtistID Having Count(MemberID)>1) 
+
+5)
+Select Artistname From Artists A
+Inner Join
+ (Select ArtistID, Count(MemberID) as NumMem 
+From XrefArtistsMembers Group by ArtistID 
+Having Count(MemberID)>1) SQ
+On A.ArtistID = SQ.ArtistID ;
+
+6)		
+Update Members M, XrefArtistsMembers X, Artists A 
+Set Email = Concat(M.FirstName ,' @confused.com')
+Where   M.MemberID = X.MemberID
+            AND   A.ArtistID = X.ArtistID 
+            AND   Artistname = 'Confused';
+
+7)
+Update Members M, SalesPeople S
+Set M.SalesID=4 
+Where M.SalesID=S.SalesID 
+          AND Region='VA' 
+          AND   S.FirstName='Clint'
+          AND  S.LastName='Sanchez';
+
+8)
+
+
+
+
+

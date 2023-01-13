@@ -1,0 +1,32 @@
+1) SELECT * FROM Products
+   WHERE ProductName NOT BETWEEN 'Carnarvon Tigers' AND 'Mozzarella di Giovanni';
+
+2) SELECT * FROM Employees
+   WHERE BirthDate BETWEEN '1950-01-01' AND '1968-12-31';
+
+3) SELECT * FROM Products
+   WHERE SupplierID BETWEEN 10 AND 20
+   AND NOT SupplierID IN (11,14,16);
+
+4) SELECT Cust.CustomerID, Ord.OrderID 
+   FROM Customers as Cust, Orders as Ord
+   WHERE Cust.CustomerID = 7 AND Ord.CustomerID = Cust.CustomerID;
+        
+5) SELECT ContactName, SupplierID,  Address + ', ' + City + ' ' + PostalCode + ', ' + Country AS SupplierAddress
+   FROM Suppliers;
+
+//JOIN
+
+6) SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+   FROM Customers, Orders
+   WHERE Orders.CustomerID=Customers.CustomerID;
+
+   SELECT Employees.EmployeeID, Orders.OrderID, Orders.OrderDate, Orders.ShipperID
+   FROM Orders
+   INNER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID;
+
+        
+        
+
+
+        

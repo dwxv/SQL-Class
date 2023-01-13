@@ -1,0 +1,50 @@
+1) SELECT COUNT(CustomerID)
+   FROM Customers;
+
+2) INSERT INTO Student (CIN, LastName, FirstName, Address, City, State)
+   VALUES ('306904091','Cross','Micheal','231 Main','Little Rock','AK');
+ 
+   INSERT INTO Student (CIN, LastName, FirstName, Address, City, State)
+   VALUES ('306784934','Nova','Richard','321 Main','Phoenix','AZ');
+
+   INSERT INTO Student (CIN, LastName, FirstName, Address, City, State)
+   VALUES ('306573490','Nediaj','Keenan','123 Main','Los Angeles','CA');
+
+3) CREATE TABLE GRADES
+   (
+   CIN int,
+   Dept varchar(255),
+   Course varchar(255),
+   Grade char(1)
+   );
+        
+4) INSERT INTO GRADES 
+   VALUES ('306904091','Psychology', 'PSYC 1200', 'A'),
+   ('306904091','Pyschology', 'MATH 2100', 'B'); 
+   
+5) INSERT INTO GRADES 
+   VALUES ('306573490','Computer Science', 'CS 1222', 'F'),
+   ('306573490','Computer Science', 'PHYS 101', 'A'); 
+
+   INSERT INTO GRADES 
+   VALUES ('306784934','English', 'ENG 1010', 'B'),
+   ('306784934','English', 'MATH 2200', 'C'); 
+
+6) SELECT COUNT(CIN)
+   FROM Student;
+
+7) SELECT * FROM Student
+   ORDER BY LastName ASC, FirstName DESC;
+
+8) SELECT * FROM Student
+   WHERE LastName LIKE 'N%' OR 'C%';
+
+9) SELECT CIN, Address + ', ' + City + ', ' + State AS Address
+   FROM Student;
+
+        
+        
+
+        
+
+        

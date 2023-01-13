@@ -1,0 +1,39 @@
+1) select * from department
+WHERE building = 'Watson';
+
+2) select * from instructor
+ORDER BY name, salary DESC;
+
+3) select name, title from instructor
+natural join teaches 
+natural join courses;
+
+select name, title from instructor 
+natural join teaches, course
+whre teaches.course_id = course.course_id;
+
+4) select * from instructor
+WHERE salary > (select min(salary) from instructor where dept_name = 'Biology');
+
+select distint t.name
+from instructor as t, instructor as s
+where t.salary > s.salary and s.dept_name = 'Biology';
+
+5) select name from instructor
+WHERE dept_name = 'Comp. Sci.' AND salary > 70000;
+
+6) select * from section
+WHERE year = '2009' AND semester = 'Fall';
+
+select * from section WHERE year = '2010' AND semester = 'Spring';
+
+select * from section
+WHERE year = '2009' AND semester = 'Fall'
+UNION (select * from section WHERE year = '2010' AND semester = 'Spring');
+
+Notes:
+natural join is find out what the common stuff they have, you do not specify the ON, it looks for common field
+
+=========================================
+select 'my name is David'
+

@@ -1,0 +1,64 @@
+1)
+Select      Concat('source: ',Leadsource) As Source,              Count(*) As NumLead 
+From        Artists 
+Group by  Source
+limit 2;
+
+2)
+select Length('Larry King')  =10;
+select Left('Larry King',5) ='Larry';
+select Right('Larry King',4) ='King';
+select Substring('Larry King', 2, 4) = 'arry';
+select Locate('king', 'Larry King')  =7;
+select LTrim('  Larry  ')  = 'Larry ';
+select RTrim('  Larry  ') = ' Larry';
+select Trim('  Larry  ') = 'Larry';
+select Upper('Larry') = 'LARRY';
+select Lower('Larry') = 'larry';
+
+3)
+SELECT       Left(lastname,1), Count(*)
+FROM	    Members
+GROUP BY   Left(lastname,1);
+
+4)
+SELECT Concat(Right(artistName,Length(artistName)-
+            4), ', The' ) AS NewName
+FROM     Artists
+WHERE   Left(artistName,4) = 'The ';
+
+
+5)
+SELECT Right(email, Length(email)-locate('@',email))
+FROM Members
+WHERE email IS NOT NULL;
+
+6) 
+SELECT DATEDIFF('2019-10-31','1997-12-30'); 
+select datediff( curdate(), '1997-12-30');
+
+7)
+select ADDDATE('2004-12-01',INTERVAL 1 YEAR)   '2005-12-01';
+
+select date_format('2004-12-01','The %D of %M');
+
+select date_format('2004-12-01','%Y,%M, %e');
+
+select date_format(curdate(),'%Y,%M, %e');
+
+8)
+Select lastname, firstname, birthday, To_Days(Now())-To_days(birthday) As AgeInDays 
+From Members
+Where  region='GA';
+
+9)
+Select artistname, entrydate, Date_Format(entrydate, '%m-%d-%Y') As Entered From Artists;
+
+Select  WebAddress, IsNull(WebAddress) As Is_It_Null From Artists limit 3;
+Select  webaddress, IfNull(WebAddress,'No website') From Artists limit 3;
+Select Concat(trackTitle, ':', lengthSeconds) From Tracks Where titleID = 4 limit 3;
+
+
+
+
+

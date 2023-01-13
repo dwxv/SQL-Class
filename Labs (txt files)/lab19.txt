@@ -1,0 +1,51 @@
+1) select course.course_id, sec_id, building, room_number
+from course, section
+where course.course_id = section.course_id
+	and course.dept_name = 'Physics'
+	and section.semester = 'Fall'
+	and section.year = '2009';
+
+2) create view physics_fall_2009 as 
+select course.course_id, sec_id, building, room_number
+from course, section
+where course.course_id = section.course_id
+	and course.dept_name = 'Physics'
+	and section.semester = 'Fall'
+	and section.year = '2009';
+
+3) create view physics_fall_2009_watson as
+select course_id, room_number
+from physics_fall_2009
+where building = 'Watson';
+
+4) create view dept_total_salary(dept_name, total_salary) as
+select dept_name, sum(salary)
+from instructor 
+group by dept_name;
+
+
+
+NOTE===========================================================
+SELECT 
+    productCode, 
+    productName, 
+    textDescription
+FROM
+    products
+INNER JOIN productlines USING (productline);
+
+---                    ---                   --- 
+SELECT 
+    productCode, 
+    productName, 
+    textDescription
+FROM
+    products t1
+INNER JOIN productlines t2 
+    ON t1.productline = t2.productline;
+----------------------------------------------------------
+DDL- data definition language... syntax, create, modify, 
+remove database, alter, foreign key 
+
+DML- data manipulation language... adding(inserting), delete, 
+update, actual stuff with the data in the table

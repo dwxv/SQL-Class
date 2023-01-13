@@ -1,0 +1,24 @@
+1) CREATE TABLE courses (
+    course_id INT PRIMARY KEY AUTOINCREMENT,
+    course_name VARCHAR(50) NOT NULL
+);
+
+2) ALTER TABLE courses
+     ADD fee NUMERIC (10, 2) AFTER course_name,
+     ADD max_limit INT AFTER course_name;
+
+3) ALTER TABLE courses
+     DROP column max_limit;
+
+Note:
+*Sample database*
+Log onto server
+cs1.calstatela.edu
+nano createTABLES.sql
+mysql -u user_name -p
+
+putty 
+host name: cs1.calstatela.edu port: 22 (SSH)
+open
+
+sqltutorial sample database
